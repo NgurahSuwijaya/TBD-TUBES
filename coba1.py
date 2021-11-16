@@ -9,7 +9,7 @@ auth = tweepy.OAuthHandler(api_key, api_secret_key)
 auth.set_access_token(access_token, access_token_secret_key)
 api = tweepy.API(auth)
 
-resultSearch = api.search_tweets(q="kenapa bitcoin", lang="id", count="100")
+resultSearch = api.search_tweets(q="Cryptocurrency", lang="id", count="100")
 
 for tweet in resultSearch:
-    print(tweet.text)
+    print(tweet.user.screen_name, tweet.text )
