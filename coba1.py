@@ -1,5 +1,6 @@
 import tweepy
 import csv
+import pandas as pd
 
 
 api_key = "Qi2fzEgqZt4WyllQJiihhHxSG"
@@ -14,19 +15,19 @@ api = tweepy.API(auth)
 keyparam="cryptocurency"
 csvfile = open(keyparam+".csv","a+",newline="",encoding="utf-8")
 csvWriter = csv.writer(csvfile)
-
 c = []
-i = []
 u = []
 t = []
 
 
 for tweet in tweepy.Cursor(api.search_tweets,q=keyparam, count=1000, lang="id").items():
-    print(tweet.created_at,tweet.id,tweet.user.name, tweet.text)
+    print(tweet.created_at,tweet.user.name, tweet.text)
     c.append(tweet.created_at)
-    i.append(tweet.id)
     u.append(tweet.user.name)
     t.append(tweet.text.encode("utf-8"))
-    tweetss = [tweet.created_at,tweet.id,tweet.user.name,tweet.text.encode("utf-8")]
+    tweetss = [tweet.created_at,tweet.user.name,tweet.text.encode("utf-8")]
     csvWriter.writerow(tweetss)
 
+dictTweets = {"waktu":c,"username":u,"text":t}
+df = pd.DataFrame(dictTweets,columns=["waktu","username","teks"])
+df
