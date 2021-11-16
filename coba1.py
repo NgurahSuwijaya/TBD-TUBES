@@ -11,7 +11,7 @@ auth = tweepy.OAuthHandler(api_key, api_secret_key)
 auth.set_access_token(access_token, access_token_secret_key)
 api = tweepy.API(auth)
 
-keyparam="cryptopcurency"
+keyparam="cryptocurency"
 csvfile = open(keyparam+".csv","a+",newline="",encoding="utf-8")
 csvWriter = csv.writer(csvfile)
 
